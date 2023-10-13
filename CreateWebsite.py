@@ -49,7 +49,7 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
             style={
                 'textAlign': 'center',
                 'color': '#ffffff',
-                'font-size': '18px'
+                'font-size': '12px'
             }),
     #The buttons toggels for department vs graduate program
     
@@ -91,7 +91,7 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
                             'fontWeight': 'bold',
                             'font-family': 'Arial',
                             #increase the font size of the header
-                            'fontSize': 20,
+                            'fontSize': 16,
                             'color': '#ffffff'
                         },
                         style_data={
@@ -104,7 +104,7 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
                             'overflow': 'hidden',
                             'textOverflow': 'ellipsis',
                             'maxWidth': 0,
-                            'fontSize': 16
+                            'fontSize': 12
                         },
                         style_data_conditional=[
                             {
@@ -156,8 +156,8 @@ def returnPlot(gradButton, deptButton):
         autosize=False,
         minreducedwidth=500,
         minreducedheight=500,
-        width=1200,
-        height=1200,
+        width=800,
+        height=800,
         plot_bgcolor='#172D13',
         paper_bgcolor='#172D13',
         hoverlabel=dict(
