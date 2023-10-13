@@ -40,16 +40,16 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
                 'justify-content': 'center'
             }),
     #The subtitles
-    html.H4(children='Click on the options to change the filtering criteria',
+    html.H4(children='''Interested in studying mycology at UW-Madison? You've come to the right place! ''',
         style={
                 'textAlign': 'center',
                 'color': '#ffffff'
             }),
-    html.Div(children='Click on the rings to filter the sunburst plot and table. All website links in the table are hyperlinks and clickable!',
+    html.Div(children='The below data contains information on every mycology research group on campus. You can filter the data by graduate program or department. Clicking on the sunburst plot will filter the figure and table to display only the clicked on deparment or program. To step back up a layer, simply click in the center of the pie chart.',
             style={
                 'textAlign': 'center',
                 'color': '#ffffff',
-                'font-size': '16px'
+                'font-size': '18px'
             }),
     #The buttons toggels for department vs graduate program
     
@@ -152,7 +152,7 @@ def returnPlot(gradButton, deptButton):
         values='NumberStudents',
         color_discrete_sequence=px.colors.qualitative.Dark2,
         )
-    fig.update_traces(hovertemplate='<b>%{label}</b><br>Research Leads: %{value}<extra></extra></b><br>Click to filter the table')
+    fig.update_traces(hovertemplate='<b>%{label}</b><br>Mycologist Research Leaders: %{value}<extra></extra></b><br>Click mouse to filter the table')
     fig.update_layout(
         autosize=False,
         minreducedwidth=500,
