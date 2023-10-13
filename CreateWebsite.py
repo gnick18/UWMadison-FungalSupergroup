@@ -10,9 +10,9 @@ import warnings
 
 ### Global variables ###
 currentTable = "" #global variable to keep track of the current table
-labInfo_programs = pd.read_csv(r'/Users/gnickles/Desktop/UWMadison-FungalSupergroup/LabInfo_Sheet_Updated2023_Programs.csv', sep=',')
-labInfo_departments = pd.read_csv(r'/Users/gnickles/Desktop/UWMadison-FungalSupergroup/LabInfo_Sheet_Updated2023_Departments.csv', sep=',')
-websites = pd.read_csv(r'/Users/gnickles/Desktop/UWMadison-FungalSupergroup/LabWebsites.csv', sep=',')
+labInfo_programs = pd.read_csv(r'./LabInfo_Sheet_Updated2023_Programs.csv', sep=',')
+labInfo_departments = pd.read_csv(r'./LabInfo_Sheet_Updated2023_Departments.csv', sep=',')
+websites = pd.read_csv(r'./LabWebsites.csv', sep=',')
 
 # external CSS stylesheets
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
@@ -136,7 +136,6 @@ def returnPlot(gradButton, deptButton):
 
     if gradButton == None and deptButton == None:
         labInfo = labInfo_programs.copy(deep=True)
-        # labInfo = pd.read_csv(r'/Users/gnickles/Desktop/UWMadison-FungalSupergroup/LabInfo_Sheet_Updated2023_Programs.csv', sep=',')
     else:
         triggered_id = ctx.triggered_id
         if triggered_id == "grad":
@@ -151,7 +150,7 @@ def returnPlot(gradButton, deptButton):
         path=["Category", 'Group Leader Name'],
         values='NumberStudents',
         color_discrete_sequence=px.colors.qualitative.Dark2,
-        )
+    )
     fig.update_traces(hovertemplate='<b>%{label}</b><br>Mycologist Research Leaders: %{value}<extra></extra></b><br>Click mouse to filter the table')
     fig.update_layout(
         autosize=False,
@@ -164,8 +163,8 @@ def returnPlot(gradButton, deptButton):
         hoverlabel=dict(
             font_size=16,
             font_family="Arial"
-          )
         )
+    )
     fig.update_traces(insidetextfont=dict(size=20))
     return fig
 
@@ -184,17 +183,14 @@ def update_table(click_data, labinfo_programs, labinfo_departments):
     # If there's no clickData, or if it's a top-level click
     if ctx.triggered_id == None:
         labInfo = labInfo_programs.copy(deep=True)  
-        # labInfo = pd.read_csv(r'/Users/gnickles/Desktop/UWMadison-FungalSupergroup/LabInfo_Sheet_Updated2023_Programs.csv', sep=',')
         filtered_df = labInfo
         currentTable = "grad"
     elif ctx.triggered_id == "grad":
         labInfo = labInfo_programs.copy(deep=True)  
-        # labInfo = pd.read_csv(r'/Users/gnickles/Desktop/UWMadison-FungalSupergroup/LabInfo_Sheet_Updated2023_Programs.csv', sep=',')
         filtered_df = labInfo
         currentTable = "grad"
     elif ctx.triggered_id == "dept":
         labInfo = labInfo_departments.copy(deep=True) 
-        # labInfo = pd.read_csv(r'/Users/gnickles/Desktop/UWMadison-FungalSupergroup/LabInfo_Sheet_Updated2023_Departments.csv', sep=',')
         filtered_df = labInfo
         currentTable = "dept"
     #else the sunburst plot was clicked
@@ -202,10 +198,8 @@ def update_table(click_data, labinfo_programs, labinfo_departments):
         #reading in the file based on the current table value
         if currentTable == "grad":
             labInfo = labInfo_programs.copy(deep=True)  
-            # labInfo = pd.read_csv(r'/Users/gnickles/Desktop/UWMadison-FungalSupergroup/LabInfo_Sheet_Updated2023_Programs.csv', sep=',')
         elif currentTable == "dept":
             labInfo = labInfo_departments.copy(deep=True) 
-            # labInfo = pd.read_csv(r'/Users/gnickles/Desktop/UWMadison-FungalSupergroup/LabInfo_Sheet_Updated2023_Departments.csv', sep=',')
 
         # if the user clicked on the top level of the sunburst plot
         if click_data['points'][0]['percentEntry'] == 1:
