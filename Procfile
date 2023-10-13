@@ -1,1 +1,1 @@
-web: gunicorn CreateWebsite:app
+web: gunicorn CreateWebsite:server

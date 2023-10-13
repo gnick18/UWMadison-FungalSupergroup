@@ -23,7 +23,7 @@ colors = {
 }
 
 app = Dash(__name__)
-
+server = app.server
 
 app.layout = html.Div(style={'backgroundColor': colors['background']}, children=[
     #The top banner
