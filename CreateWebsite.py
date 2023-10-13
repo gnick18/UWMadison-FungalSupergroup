@@ -150,8 +150,9 @@ def returnPlot(gradButton, deptButton):
         labInfo, 
         path=["Category", 'Group Leader Name'],
         values='NumberStudents',
-        color_discrete_sequence=px.colors.qualitative.Dark2
+        color_discrete_sequence=px.colors.qualitative.Dark2,
         )
+    fig.update_traces(hovertemplate='<b>%{label}</b><br>Research Leads: %{value}<extra></extra></b><br>Click to filter the table')
     fig.update_layout(
         autosize=False,
         minreducedwidth=500,
@@ -159,7 +160,11 @@ def returnPlot(gradButton, deptButton):
         width=1200,
         height=1200,
         plot_bgcolor='#172D13',
-        paper_bgcolor='#172D13'
+        paper_bgcolor='#172D13',
+        hoverlabel=dict(
+            font_size=16,
+            font_family="Arial"
+          )
         )
     fig.update_traces(insidetextfont=dict(size=20))
     return fig
