@@ -156,8 +156,8 @@ def returnPlot(gradButton, deptButton):
         autosize=False,
         minreducedwidth=500,
         minreducedheight=500,
-        width=800,
-        height=800,
+        width=1000,
+        height=1000,
         plot_bgcolor='#172D13',
         paper_bgcolor='#172D13',
         hoverlabel=dict(
