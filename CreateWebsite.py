@@ -5,7 +5,6 @@ from dash import Dash, dcc, html, Input, Output, dash_table, ctx, callback
 import plotly.express as px
 import pandas as pd
 import dash_bootstrap_components as dbc
-import pdb
 import warnings
 
 ### Global variables ###
