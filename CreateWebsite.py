@@ -133,7 +133,7 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
     )
 def returnPlot(gradButton, deptButton):
     global currentTable # Use the global keyword to access the global variable
-
+    #reading in the file based on the current table value
     if gradButton == None and deptButton == None:
         labInfo = labInfo_programs.copy(deep=True)
     else:
@@ -144,6 +144,8 @@ def returnPlot(gradButton, deptButton):
         elif triggered_id == "dept":
             labInfo = labInfo_departments.copy(deep=True)
             currentTable = "dept"
+        else: #TODO this is a debugging else and print statment, remove later 
+            print(triggered_id)
             
     fig = px.sunburst(
         labInfo, 
@@ -175,9 +177,11 @@ def returnPlot(gradButton, deptButton):
     Input('SunburstPlot', 'clickData'),
     Input('labInfo_programs', 'data'),
     Input('labInfo_departments', 'data'),
+    Input("grad", "n_clicks"), 
+    Input("dept", "n_clicks")
 )
 
-def update_table(click_data, labinfo_programs, labinfo_departments):
+def update_table(click_data, labinfo_programs, labinfo_departments, gradButton, deptButton):
     global currentTable # Use the global keyword to access the global variable
 
     # If there's no clickData, or if it's a top-level click
@@ -199,12 +203,12 @@ def update_table(click_data, labinfo_programs, labinfo_departments):
         if currentTable == "grad":
             labInfo = labInfo_programs.copy(deep=True)  
         elif currentTable == "dept":
-            labInfo = labInfo_departments.copy(deep=True) 
-
+            labInfo = labInfo_departments.copy(deep=True)
+            
         # if the user clicked on the top level of the sunburst plot
         if click_data['points'][0]['percentEntry'] == 1:
             filtered_df = labInfo
-        #otherwise the user clikced on a department or program name and the table should be filtered
+        #otherwise the user clicked on a department or program name and the table should be filtered
         else:
             filterCategory = click_data['points'][0]['id']
             filtered_df = labInfo[labInfo['Category'] == filterCategory]
