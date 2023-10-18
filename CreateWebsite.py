@@ -49,7 +49,7 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
             style={
                 'textAlign': 'center',
                 'color': '#ffffff',
-                'font-size': '12px'
+                'font-size': '14px'
             }),
     #The buttons toggels for department vs graduate program
     
