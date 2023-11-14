@@ -26,7 +26,7 @@ server = app.server
 
 app.layout = html.Div(style={'backgroundColor': colors['background']}, children=[
     #The top banner
-    html.H1(children='Mycology Labs at UW-Madison', 
+    html.H1(children='Mycology Labs at UW-Madison and Madison National Labs', 
             style={
                 'textAlign': 'center',
                 'color': colors['text'],
@@ -44,7 +44,7 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
                 'textAlign': 'center',
                 'color': '#ffffff'
             }),
-    html.Div(children='The below data contains information on every mycology research group on campus. You can filter the data by graduate program or department. Clicking on the sunburst plot will filter the figure and table to display only the clicked on deparment or program. To step back up a layer, simply click in the center of the pie chart.',
+    html.Div(children='The below data contains information on every mycology research group on campus. You can filter the data by graduate program or department. Clicking on the sunburst plot will filter the figure and table to display only the clicked on deparment or program. To step back up a layer, simply click in the center of the pie chart. Supergroup affiliated mycologists who work at nearby national labs can be found under the Department tab.',
             style={
                 'textAlign': 'center',
                 'color': '#ffffff',
